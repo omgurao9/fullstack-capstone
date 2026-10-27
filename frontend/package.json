@@ -1,0 +1,10 @@
+{
+  "name": "cars-dealership-frontend-components",
+  "version": "1.0.0",
+  "private": true,
+  "description": "React source components for the Cars Dealership capstone",
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  }
+}

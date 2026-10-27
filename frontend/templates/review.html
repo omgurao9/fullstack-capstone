@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}Post a Review | {{ dealer.name }}{% endblock %}
+{% block content %}
+<div class="form-card"><h1>Review {{ dealer.name }}</h1><p>Tell other drivers about your experience.</p>
+<form method="post">{% csrf_token %}
+<label for="purchase">Vehicle purchased (optional)</label><input id="purchase" name="purchase" placeholder="e.g. 2025 Toyota Camry">
+<label for="review">Your review</label><textarea id="review" name="review" rows="6" required placeholder="Share your experience..."></textarea>
+<button class="btn btn-success" type="submit">Post Review</button>
+</form></div>
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}Login | Cars Dealership{% endblock %}
+{% block content %}
+<div class="form-card"><h1>Welcome back</h1><p>Sign in to post dealership reviews.</p>
+<form method="post" action="/login/submit/">{% csrf_token %}
+<label for="username">Username</label><input id="username" name="username" required autocomplete="username">
+<label for="password">Password</label><input id="password" name="password" type="password" required autocomplete="current-password">
+<input type="hidden" name="next" value="{{ next }}"><button class="btn btn-primary" type="submit">Login</button>
+</form><p>Demo: <code>demo_user</code> / <code>DemoPass123!</code></p></div>
+{% endblock %}

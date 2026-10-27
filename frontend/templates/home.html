@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Cars Dealership | Find a Dealer{% endblock %}
+{% block content %}
+<section class="hero">
+  <div><p class="eyebrow">FIND YOUR NEXT DRIVE</p><h1>Discover trusted dealerships.</h1><p>Explore branches, compare local dealerships, and read customer reviews.</p></div>
+  <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1100&q=80" alt="Modern car parked on a road">
+</section>
+<section class="section-heading"><div><h2>Our dealerships</h2><p>Choose a branch to see details and customer feedback.</p></div>
+<form method="get" class="filter-form"><label for="state">Filter by state</label><select id="state" name="state"><option value="">All states</option><option {% if selected_state == 'Kansas' %}selected{% endif %}>Kansas</option><option {% if selected_state == 'Texas' %}selected{% endif %}>Texas</option><option {% if selected_state == 'California' %}selected{% endif %}>California</option><option {% if selected_state == 'Illinois' %}selected{% endif %}>Illinois</option></select><button class="btn btn-primary" type="submit">Filter</button></form></section>
+<div class="dealer-grid">
+{% for dealer in dealers %}
+<article class="dealer-card">
+  <img src="{% if dealer.image_url %}{{ dealer.image_url }}{% else %}https://images.unsplash.com/photo-1560253023-3ec5d502959f?auto=format&fit=crop&w=800&q=80{% endif %}" alt="Cars at {{ dealer.name }}">
+  <div class="card-body"><p class="eyebrow">{{ dealer.city }}, {{ dealer.state }}</p><h3>{{ dealer.name }}</h3><p>{{ dealer.address }}</p><p>{{ dealer.phone }}</p><a class="btn btn-primary" href="/dealer/{{ dealer.id }}/">View dealer & reviews</a></div>
+</article>
+{% empty %}<p>No dealerships found for this state.</p>{% endfor %}
+</div>
+{% endblock %}

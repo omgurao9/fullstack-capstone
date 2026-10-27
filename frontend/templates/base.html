@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Cars Dealership{% endblock %}</title>
+  <link rel="stylesheet" href="/static/css/site.css">
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="/">Cars Dealership</a>
+  <nav aria-label="Main navigation">
+    <a class="{% if request.path == '/' %}active{% endif %}" href="/">Home</a>
+    <a class="{% if request.path == '/about/' %}active{% endif %}" href="/about/">About Us</a>
+    <a class="{% if request.path == '/contact/' %}active{% endif %}" href="/contact/">Contact Us</a>
+    {% if user.is_authenticated %}
+      <span class="welcome">Signed in as {{ user.username }}</span>
+      <a href="/logout/">Logout</a>
+    {% else %}
+      <a class="{% if request.path == '/login/' %}active{% endif %}" href="/login/">Login</a>
+      <a href="/register/">Sign up</a>
+    {% endif %}
+  </nav>
+</header>
+<main class="container">
+  {% if messages %}<div class="messages">{% for message in messages %}<p class="message {{ message.tags }}">{{ message }}</p>{% endfor %}</div>{% endif %}
+  {% block content %}{% endblock %}
+</main>
+<footer><p>Cars Dealership · Demo capstone application</p></footer>
+</body>
+</html>

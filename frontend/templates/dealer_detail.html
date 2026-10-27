@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block title %}{{ dealer.name }} | Cars Dealership{% endblock %}
+{% block content %}
+<a href="/" class="back-link">← All dealerships</a><section class="detail-hero"><div><p class="eyebrow">{{ dealer.city }}, {{ dealer.state }}</p><h1>{{ dealer.name }}</h1><p>{{ dealer.address }}{% if dealer.zip_code %}, {{ dealer.zip_code }}{% endif %}</p><p>{{ dealer.phone }}</p>{% if dealer.website %}<p><a href="{{ dealer.website }}">{{ dealer.website }}</a></p>{% endif %}{% if user.is_authenticated %}<a class="btn btn-success" href="/review/{{ dealer.id }}/">Review Dealer</a>{% else %}<a class="btn btn-primary" href="/login/?next=/review/{{ dealer.id }}/">Login to review</a>{% endif %}</div><img src="https://images.unsplash.com/photo-1560253023-3ec5d502959f?auto=format&fit=crop&w=1000&q=80" alt="Dealership vehicles"></section>
+<section class="reviews-section"><div class="section-heading"><div><h2>Customer reviews</h2><p>Feedback from dealership visitors.</p></div></div>
+{% for review in reviews %}<article class="review-card"><div class="review-meta"><strong>{{ review.display_name }}</strong><span>{{ review.created_at|date:"M d, Y" }}</span></div><p>{{ review.review }}</p>{% if review.sentiment %}<span class="sentiment">{{ review.sentiment|title }} sentiment</span>{% endif %}</article>{% empty %}<p>No reviews yet. Be the first to share your experience.</p>{% endfor %}</section>
+{% endblock %}
