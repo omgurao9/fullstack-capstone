@@ -1,6 +1,8 @@
+Repository Name: fullstack-capstone
+Project Name: Cars Dealership — Full-stack Capstone
+
 # Cars Dealership — Full-stack Capstone
 
-Repository name: fullstack-capstone
 
 A starter implementation for the Cars Dealership full-stack capstone. It uses Django, SQLite, Django templates, a React registration component source file, REST-style JSON endpoints, Docker, and GitHub Actions.
 
